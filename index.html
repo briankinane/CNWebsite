@@ -78,15 +78,42 @@
             </dl>
           </div>
           <div class="hero-visual" aria-hidden="true" data-animate>
-            <div class="hero-visual-nodes">
-              <span class="hero-connection hero-connection--one"></span>
-              <span class="hero-connection hero-connection--two"></span>
-              <span class="hero-connection hero-connection--three"></span>
-              <span class="hero-node hero-node--one"></span>
-              <span class="hero-node hero-node--two"></span>
-              <span class="hero-node hero-node--three"></span>
-              <span class="hero-node hero-node--four"></span>
-            </div>
+            <div class="hero-visual-glow hero-visual-glow--one"></div>
+            <div class="hero-visual-glow hero-visual-glow--two"></div>
+            <svg class="hero-visual-art" viewBox="0 0 520 520" role="presentation" focusable="false">
+              <defs>
+                <linearGradient id="heroLineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(0, 201, 255, 0.9)" />
+                  <stop offset="60%" stop-color="rgba(132, 230, 255, 0.8)" />
+                  <stop offset="100%" stop-color="rgba(255, 255, 255, 0.4)" />
+                </linearGradient>
+                <radialGradient id="heroNodeGradient" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#9ff0ff" />
+                  <stop offset="100%" stop-color="#00b5ff" />
+                </radialGradient>
+              </defs>
+              <g class="hero-lines">
+                <path class="hero-line hero-line--outer" d="M36 348C150 196 274 184 476 84" />
+                <path class="hero-line hero-line--inner" d="M64 406C206 304 328 276 502 220" />
+                <path class="hero-line hero-line--arc" d="M72 186C188 258 330 132 484 210" />
+                <path class="hero-line hero-line--vertical" d="M160 108C216 252 290 338 372 394" />
+                <path class="hero-line hero-line--diagonal" d="M122 420C238 332 360 220 448 132" />
+              </g>
+              <g class="hero-nodes">
+                <circle class="hero-node" cx="456" cy="126" r="8" />
+                <circle class="hero-node" cx="392" cy="320" r="7" />
+                <circle class="hero-node" cx="244" cy="256" r="6.5" />
+                <circle class="hero-node" cx="128" cy="354" r="7.5" />
+                <circle class="hero-node" cx="328" cy="154" r="6" />
+              </g>
+              <g class="hero-orbits">
+                <circle class="hero-orbit hero-orbit--wide" cx="260" cy="260" r="210" />
+                <circle class="hero-orbit hero-orbit--narrow" cx="260" cy="260" r="150" />
+              </g>
+            </svg>
+            <span class="hero-spark hero-spark--one"></span>
+            <span class="hero-spark hero-spark--two"></span>
+            <span class="hero-spark hero-spark--three"></span>
           </div>
         </div>
         <div class="hero-marquee" aria-label="Institutions we support">
