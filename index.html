@@ -85,15 +85,38 @@
             </dl>
           </div>
           <div class="hero-visual" data-animate>
-            <div class="hero-visual-panel" aria-hidden="true">
-              <div class="hero-network">
-                <span class="hero-network-node hero-network-node--core">CommNet</span>
-                <span class="hero-network-node hero-network-node--identity">Identity</span>
-                <span class="hero-network-node hero-network-node--m365">Microsoft 365</span>
-                <span class="hero-network-node hero-network-node--security">Security</span>
-                <span class="hero-network-node hero-network-node--network">Networking</span>
-                <span class="hero-network-node hero-network-node--resilience">Resilience</span>
-              </div>
+            <div class="hero-visual-illustration" aria-hidden="true">
+              <svg class="hero-network-svg" viewBox="0 0 520 520" role="presentation" focusable="false">
+                <defs>
+                  <linearGradient id="hero-line" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#70c1ff" stop-opacity="0.75" />
+                    <stop offset="100%" stop-color="#0074c4" stop-opacity="0.9" />
+                  </linearGradient>
+                  <radialGradient id="hero-node" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#9cd4ff" stop-opacity="0.95" />
+                    <stop offset="70%" stop-color="#1b66ab" stop-opacity="0.85" />
+                    <stop offset="100%" stop-color="#0b2b4c" stop-opacity="0" />
+                  </radialGradient>
+                </defs>
+                <g class="hero-network-web" stroke="url(#hero-line)" stroke-width="1.8" fill="none">
+                  <path d="M60 160L200 80l120 36 140-58" opacity="0.55" />
+                  <path d="M60 320l90-120 140 40 150-96" opacity="0.45" />
+                  <path d="M90 420l140-90 110 50 160-140" opacity="0.6" />
+                  <path d="M180 110l40 150-60 140" opacity="0.35" />
+                  <path d="M300 120l30 130 150 40" opacity="0.5" />
+                  <path d="M240 360l120-70 80 130" opacity="0.4" />
+                </g>
+                <g class="hero-network-nodes">
+                  <circle cx="60" cy="320" r="18" fill="url(#hero-node)" />
+                  <circle cx="140" cy="200" r="22" fill="url(#hero-node)" />
+                  <circle cx="210" cy="110" r="16" fill="url(#hero-node)" />
+                  <circle cx="320" cy="170" r="20" fill="url(#hero-node)" />
+                  <circle cx="420" cy="80" r="15" fill="url(#hero-node)" />
+                  <circle cx="470" cy="260" r="18" fill="url(#hero-node)" />
+                  <circle cx="340" cy="370" r="24" fill="url(#hero-node)" />
+                  <circle cx="180" cy="430" r="19" fill="url(#hero-node)" />
+                </g>
+              </svg>
             </div>
             <p class="hero-visual-caption">
               Specialists across Microsoft, Aruba, Cisco, Juniper, Fortinet, CommVault, Keepit, VMware, and Hyper-V.
