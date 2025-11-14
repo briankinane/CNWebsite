@@ -1,63 +1,77 @@
-const header = document.querySelector('.site-header');
 const navToggle = document.querySelector('.nav-toggle');
-const navList = document.querySelector('#primary-menu');
-const yearEl = document.querySelector('#year');
-const animatedBlocks = document.querySelectorAll('[data-animate]');
+const navList = document.querySelector('.nav-list');
+const scrollButtons = document.querySelectorAll('.scroll-button');
+const mapTrack = document.querySelector('.map-track');
+const mapSteps = document.querySelectorAll('.map-step');
+const detailTitle = document.querySelector('.detail-title');
+const detailCopy = document.querySelector('.detail-copy');
+const yearTarget = document.getElementById('year');
 
-function updateHeaderState() {
-  const scrolled = window.scrollY > 60;
-  header?.setAttribute('data-scroll', scrolled ? 'true' : 'false');
+if (yearTarget) {
+  yearTarget.textContent = new Date().getFullYear();
 }
 
-function toggleNav() {
-  const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-  navToggle.setAttribute('aria-expanded', (!expanded).toString());
-  navList?.setAttribute('aria-hidden', expanded ? 'true' : 'false');
+if (navToggle && navList) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = navList.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
 }
 
-function handleResize() {
-  if (!navList) return;
-  if (window.innerWidth > 960) {
-    navToggle?.setAttribute('aria-expanded', 'false');
-    navList.setAttribute('aria-hidden', 'false');
-  } else {
-    const expanded = navToggle?.getAttribute('aria-expanded') === 'true';
-    navList.setAttribute('aria-hidden', expanded ? 'false' : 'true');
+const updateScrollButtons = () => {
+  if (!mapTrack) return;
+  const maxScrollLeft = mapTrack.scrollWidth - mapTrack.clientWidth - 5;
+  scrollButtons.forEach((button) => {
+    if (button.classList.contains('prev')) {
+      button.disabled = mapTrack.scrollLeft <= 5;
+    } else {
+      button.disabled = mapTrack.scrollLeft >= maxScrollLeft;
+    }
+  });
+};
+
+scrollButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const direction = button.classList.contains('next') ? 1 : -1;
+    mapTrack.scrollBy({ left: direction * 260, behavior: 'smooth' });
+  });
+});
+
+if (mapTrack) {
+  mapTrack.addEventListener('scroll', updateScrollButtons);
+  window.addEventListener('resize', updateScrollButtons);
+  updateScrollButtons();
+}
+
+const setActiveStep = (step) => {
+  mapSteps.forEach((mapStep) => mapStep.classList.toggle('active', mapStep === step));
+  if (detailTitle && detailCopy) {
+    detailTitle.textContent = step.dataset.step || step.querySelector('h3').textContent;
+    detailCopy.textContent = step.querySelector('p').textContent;
   }
-}
+};
 
-function setYear() {
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear().toString();
+mapSteps.forEach((step, index) => {
+  step.addEventListener('click', () => {
+    setActiveStep(step);
+  });
+
+  if (index === 0) {
+    setActiveStep(step);
   }
-}
+});
 
-function initRevealObserver() {
-  if (!('IntersectionObserver' in window)) {
-    animatedBlocks.forEach((block) => block.classList.add('is-visible'));
-    return;
-  }
-
+if ('IntersectionObserver' in window && mapTrack) {
   const observer = new IntersectionObserver(
-    (entries, obs) => {
+    (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
+          setActiveStep(entry.target);
         }
       });
     },
-    { threshold: 0.16, rootMargin: '0px 0px -60px 0px' }
+    { root: mapTrack, threshold: 0.6 }
   );
 
-  animatedBlocks.forEach((block) => observer.observe(block));
+  mapSteps.forEach((step) => observer.observe(step));
 }
-
-navToggle?.addEventListener('click', toggleNav);
-window.addEventListener('scroll', updateHeaderState);
-window.addEventListener('resize', handleResize);
-
-updateHeaderState();
-handleResize();
-setYear();
-initRevealObserver();
