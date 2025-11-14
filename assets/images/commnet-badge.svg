@@ -1,0 +1,46 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">CommNet badge</title>
+  <desc id="desc">Stylised CommNet emblem with binary backdrop and circuit motif</desc>
+  <defs>
+    <linearGradient id="badgeGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a6eb7" />
+      <stop offset="100%" stop-color="#0b2f56" />
+    </linearGradient>
+    <linearGradient id="chipGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9fd7ff" />
+      <stop offset="100%" stop-color="#4ca1d8" />
+    </linearGradient>
+    <clipPath id="badgeClip">
+      <circle cx="60" cy="60" r="52" />
+    </clipPath>
+    <pattern id="binaryPattern" width="16" height="24" patternUnits="userSpaceOnUse">
+      <text x="0" y="12" font-family="'Source Code Pro', 'Courier New', monospace" font-size="12" fill="rgba(255,255,255,0.18)">1010</text>
+      <text x="0" y="24" font-family="'Source Code Pro', 'Courier New', monospace" font-size="12" fill="rgba(255,255,255,0.18)">0101</text>
+    </pattern>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#badgeGradient)" />
+  <g clip-path="url(#badgeClip)">
+    <rect x="-10" y="0" width="120" height="120" fill="url(#binaryPattern)" transform="skewX(-10)" opacity="0.75" />
+    <g opacity="0.85">
+      <rect x="-40" y="0" width="80" height="120" fill="rgba(255,255,255,0.08)" />
+      <rect x="40" y="0" width="80" height="120" fill="rgba(255,255,255,0.12)" />
+    </g>
+    <g transform="translate(20,20)">
+      <rect x="18" y="18" width="64" height="64" rx="12" fill="url(#chipGradient)" opacity="0.85" />
+      <rect x="26" y="26" width="48" height="48" rx="9" fill="#0b3563" opacity="0.4" />
+      <g stroke="#0b3563" stroke-width="2" stroke-linecap="round" opacity="0.85">
+        <path d="M26 42h48" />
+        <path d="M26 56h48" />
+        <path d="M42 26v48" />
+        <path d="M58 26v48" />
+      </g>
+      <g fill="#f2f8ff" opacity="0.85">
+        <circle cx="34" cy="34" r="4" />
+        <circle cx="66" cy="34" r="4" />
+        <circle cx="34" cy="66" r="4" />
+        <circle cx="66" cy="66" r="4" />
+      </g>
+    </g>
+  </g>
+  <circle cx="60" cy="60" r="58" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" />
+</svg>
