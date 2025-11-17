@@ -514,9 +514,7 @@ img {
 
 .hero-marquee {
   position: relative;
-  display: flex;
   overflow: hidden;
-  gap: 0;
   padding: 1.75rem 0;
   margin-top: 3.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -532,14 +530,9 @@ img {
   display: flex;
   align-items: center;
   gap: 2.75rem;
-  flex: 0 0 auto;
-  min-width: 100%;
-  padding-right: 2.75rem;
+  width: max-content;
+  white-space: nowrap;
   animation: marquee 32s linear infinite;
-}
-
-.hero-marquee-track:nth-child(2) {
-  animation-delay: -16s;
 }
 
 .hero-marquee span {
@@ -944,7 +937,7 @@ textarea {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
